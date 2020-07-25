@@ -1,6 +1,8 @@
 <template>
   <div class="fondo">
+    <Drawer/>
     <app-bar></app-bar>
+    
     <v-main>
       <v-parallax src="https://i.pinimg.com/originals/c8/35/d0/c835d0402b0ba3d1d72c8eb2c46c72cf.jpg"></v-parallax>
       <v-container>
@@ -52,8 +54,10 @@
 </template>
 
 <script>
-import AppBar from "@/components/AppBar";
 import { mapActions, mapState } from "vuex";
+import AppBar from "@/components/AppBar";
+import Drawer from "@/components/Drawer"
+
 export default {
   data() {
     return {
@@ -65,7 +69,8 @@ export default {
     ...mapState(["apod"])
   },
   components: {
-    AppBar
+    AppBar,
+    Drawer
   },
   methods: {
     ...mapActions(["getApod"]),

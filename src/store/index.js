@@ -10,15 +10,30 @@ const KEY = "Ff1M6akMgv2nZaH9gaSAZkaGMrTib0Rnk9hgzFAk"
 export default new Vuex.Store({
   state: {
     currentUser:null,
-    apod: {},
-    roverData: {
-      photos: []
-    }
+      apod: {},
+      articles: require('../data/articles.json'),
+    drawer: false,
+    items: [
+      {
+        text: 'Apod',
+        href: '/apod',
+      },
+      {
+        text: 'Rover',
+        href: '/rover',
+      },
+    ],
+      roverData: {
+      photos: [],
+        },
+    
   },
   mutations: {
+    setDrawer: (state, payload) => (state.drawer = payload),
+    toggleDrawer: state => (state.drawer = !state.drawer),
     SET_CURRENT_USER(state, user) { state.currentUser = user },
     GET_APOD(state, apod) { state.apod = apod },
-    GET_ROVER(state, info) { state.roverData = info }
+    GET_ROVER(state, info) { state.roverData = info },
   },
   actions: {
     setCurrentUser({commit}, user) {commit('SET_CURRENT_USER', user)},
@@ -47,7 +62,30 @@ export default new Vuex.Store({
       return state.roverData.photos.map((photo) => {
         return photo.camera.name
       })
-    }
+    },
+    categories: state => {
+      const categories = []
+
+      for (const article of state.articles) {
+        if (
+          !article.category ||
+          categories.find(category => category.text === article.category)
+        ) continue
+
+        const text = article.category
+
+        categories.push({
+          text,
+          href: '#!',
+        })
+      }
+
+      return categories.sort().slice(0, 4)
+    },
+    links: (state, getters) => {
+      return state.items.concat(getters.categories)
+    },
+
   },
   modules: {
   }

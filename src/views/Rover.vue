@@ -1,36 +1,63 @@
 <template>
-  <div>
+  <div class="fondo">
     <app-bar></app-bar>
-    <v-form>
+    <Drawer/>
+    <v-parallax
+    class="mt-16"
+    dark
+    src="https://mars.nasa.gov/system/feature_items/images/6037_msl_banner.jpg"
+  >
+    <v-layout
+      align-center
+      column
+      justify-center
+    >
+      <h1 class="display-2 font-weight-bold mb-3">Rovers NASA</h1>
+      <h4 class="subheading">Mars photo album</h4>
+    </v-layout>
+  </v-parallax>
+    <v-container>
+      <v-form class="mt-15">
+        <v-label>Sol Days</v-label>
       <v-text-field
         v-model="sol"
         single-line
         type="number"
         required
         label="Sol days"
+        solo
       />
       <v-select
         v-model="rover"
         :items="rovers"
         label="Rover"
         required
+        solo
+        chips
       ></v-select>
-      <v-btn color="success" class="mr-4" @click="getRoverInfo">
+      <v-btn color="#00BFA5" class="mr-4" @click="getRoverInfo">
         Ver info
+        <v-icon right>party-mode</v-icon>
       </v-btn>
     </v-form>
-    <div v-if="cameras">
+    
+    <div v-if="cameras" class="mt-6">
       <div v-for="(count, camera) in camerasCount" :key="camera">
         {{ camera }} : {{ count }}
       </div>
     </div>
-    <v-card
-      v-for="photo in roverData.photos"
-      :key="photo.id"
+    </v-container>
+   <v-container>
+     <v-row>
+       <v-col cols="12" class="col-lg-4 col-md-6 col-sm-12"  v-for="photo in roverData.photos"
+      :key="photo.id">
+          <v-card
       class="mx-auto"
-      max-width="400"
+      max-width="600"
+      elevation="15"
+      
     >
-      <v-img class="white--text align-end" height="200px" :src="photo.img_src">
+      <v-img class="white--text align-end" height="300px" :src="photo.img_src">
         <v-card-title>{{ photo.camera.full_name }}</v-card-title>
       </v-img>
       <v-card-subtitle class="pb-0">{{ photo.earth_date }}</v-card-subtitle>
@@ -38,12 +65,16 @@
         <div>{{ photo.id }}</div>
       </v-card-text>
     </v-card>
+       </v-col>
+     </v-row>
+   </v-container>
   </div>
 </template>
 
 <script>
 import { mapActions, mapState, mapGetters } from "vuex";
 import AppBar from "@/components/AppBar";
+import Drawer from "@/components/Drawer"
 export default {
   data() {
     return {
@@ -71,7 +102,14 @@ export default {
     }
   },
   components: {
-    AppBar
+    AppBar,
+    Drawer
   }
 };
 </script>
+
+<style scoped>
+  .fondo {
+  background-image: linear-gradient(to right, #83082d 0%, #c4ad2f 100%);
+}
+</style>
