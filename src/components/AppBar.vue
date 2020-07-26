@@ -41,7 +41,7 @@
         >
           {{ link.text }}
         </v-btn>
-
+      <v-spacer></v-spacer>
         
       <v-switch
         v-model="$vuetify.theme.dark"
