@@ -42,9 +42,22 @@
           </v-form>
     
           <div v-if="cameras" class="mt-6">
-          <div v-for="(count, camera) in camerasCount" :key="camera">
-          {{ camera }} : {{ count }}
-          </div>
+          <v-simple-table fixed-header height="200px">
+                <template v-slot:default>
+                  <thead>
+                    <tr>
+                      <th class="text-left">Camera</th>
+                      <th class="text-left">Count</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="(count, camera) in camerasCount" :key="camera">
+                      <td>{{ camera }}</td>
+                      <td>{{ count }}</td>
+                    </tr>
+                  </tbody>
+                </template>
+            </v-simple-table>
       </div>
     </v-container>
     <v-container>
