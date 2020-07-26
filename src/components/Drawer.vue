@@ -3,6 +3,7 @@
     v-model="drawer"
     app
     dark
+    color="red"
     temporary
   >
     <v-list>

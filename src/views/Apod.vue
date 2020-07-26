@@ -4,11 +4,12 @@
     <app-bar></app-bar>
     
     <v-main>
-      <v-parallax src="https://i.pinimg.com/originals/c8/35/d0/c835d0402b0ba3d1d72c8eb2c46c72cf.jpg"></v-parallax>
+      <v-parallax src="https://i.pinimg.com/originals/c8/35/d0/c835d0402b0ba3d1d72c8eb2c46c72cf.jpg" class="mt-16"></v-parallax>
       <v-container>
         <v-row>
         <v-col cols="12"  class="d-flex justify-center align-center col-lg-6 col-md-12" sm="12">
           <v-date-picker
+            landscape="landscape"
             :elevation="20"
             v-model="date"
             v-bind:max="today"
@@ -29,14 +30,14 @@
             >
               <v-card-title>{{ apod.title }}</v-card-title>
               <v-expand-transition>
-          <div
-            v-if="hover"
-            class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"
-            style="height: 100%;"
-          >
-            APOD
-          </div>
-        </v-expand-transition>
+                  <div
+                    v-if="hover"
+                    class="d-flex transition-fast-in-fast-out blue darken-2 v-card--reveal display-3 white--text"
+                    style="height: 100%;"
+                  >
+                    APOD Nasa
+                  </div>
+            </v-expand-transition>
             </v-img>
             <iframe class="responsive" v-else width="320" height="240" :src="apod.url"></iframe>
             <v-card-subtitle class="pb-0 mb-5">{{ apod.date }}</v-card-subtitle>

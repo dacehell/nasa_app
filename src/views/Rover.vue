@@ -2,52 +2,52 @@
   <div class="fondo">
     <app-bar></app-bar>
     <Drawer/>
-    <v-parallax
-    class="mt-16"
-    dark
-    src="https://mars.nasa.gov/system/feature_items/images/6037_msl_banner.jpg"
-  >
-    <v-layout
-      align-center
-      column
-      justify-center
-    >
-      <h1 class="display-2 font-weight-bold mb-3">Rovers NASA</h1>
-      <h4 class="subheading">Mars photo album</h4>
-    </v-layout>
-  </v-parallax>
-    <v-container>
-      <v-form class="mt-15">
-        <v-label>Sol Days</v-label>
-      <v-text-field
-        v-model="sol"
-        single-line
-        type="number"
-        required
-        label="Sol days"
-        solo
-      />
-      <v-select
-        v-model="rover"
-        :items="rovers"
-        label="Rover"
-        required
-        solo
-        chips
-      ></v-select>
-      <v-btn color="#00BFA5" class="mr-4" @click="getRoverInfo">
-        Ver info
-        <v-icon right>party-mode</v-icon>
-      </v-btn>
-    </v-form>
+        <v-parallax
+        class="mt-16"
+        dark
+        src="https://mars.nasa.gov/system/feature_items/images/6037_msl_banner.jpg"
+      >
+        <v-layout
+          align-center
+          column
+          justify-center
+        >
+          <h1 class="display-2 font-weight-bold mb-3">Rovers NASA</h1>
+          <h4 class="subheading">Mars photo album</h4>
+        </v-layout>
+      </v-parallax>
+        <v-container>
+          <v-form class="mt-15">
+            <v-label dark>Sun Days</v-label>
+              <v-text-field
+                v-model="sol"
+                single-line
+                type="number"
+                required
+                label="Sol days"
+                solo
+              />
+              <v-select
+                v-model="rover"
+                :items="rovers"
+                label="Rover"
+                required
+                solo
+                chips
+              ></v-select>
+              <v-btn color="#00BFA5" dark class="mr-4" @click="getRoverInfo">
+                Rovers
+              <v-icon right>party_mode</v-icon>
+              </v-btn>
+          </v-form>
     
-    <div v-if="cameras" class="mt-6">
-      <div v-for="(count, camera) in camerasCount" :key="camera">
-        {{ camera }} : {{ count }}
+          <div v-if="cameras" class="mt-6">
+          <div v-for="(count, camera) in camerasCount" :key="camera">
+          {{ camera }} : {{ count }}
+          </div>
       </div>
-    </div>
     </v-container>
-   <v-container>
+    <v-container>
      <v-row>
        <v-col cols="12" class="col-lg-4 col-md-6 col-sm-12"  v-for="photo in roverData.photos"
       :key="photo.id">
@@ -59,12 +59,21 @@
     >
       <v-img class="white--text align-end" height="300px" :src="photo.img_src">
         <v-card-title>{{ photo.camera.full_name }}</v-card-title>
+          <template v-slot:placeholder>
+                      <v-row
+                        class="fill-height ma-0"
+                        align="center"
+                        justify="center"
+                      >
+                        <v-progress-circular indeterminate color="grey"></v-progress-circular>
+                      </v-row>
+          </template>
       </v-img>
       <v-card-subtitle class="pb-0">{{ photo.earth_date }}</v-card-subtitle>
-      <v-card-text class="text--primary">
-        <div>{{ photo.id }}</div>
-      </v-card-text>
-    </v-card>
+          <v-card-text class="text--primary">
+            <div>{{ photo.id }}</div>
+          </v-card-text>
+        </v-card>
        </v-col>
      </v-row>
    </v-container>
