@@ -39,7 +39,10 @@
 
 <script>
 import {mapState, mapActions} from 'vuex';
+//import Swal from 'sweetalert2';
 import Firebase from 'firebase'
+
+
 export default {
   name: 'App',
 
@@ -57,9 +60,12 @@ export default {
       Firebase.auth().signInWithEmailAndPassword(this.user, this.password)
       .then(() =>{
         this.$router.push('/apod')
-        alert(`Bienvenido ${this.user}`)
+        //alert(`Bienvenido ${this.user}`)
+        this.$swal.fire({ title:`Bienvenido ${this.user}`, 
+         position: 'center',  icon: 'success', showConfirmButton: false,  timer: 1900 })
       }).catch(() =>{
-        alert(`Algo salio mal u.u`)
+         this.$swal.fire({ title:`Usuario o contraseña invalidos`, 
+         position: 'center',  imageUrl: 'https://blogs.unsw.edu.au/nowideas/files/2018/11/error-no-es-fracaso.jpg',  imageWidth: 400,  imageHeight: 200 })
       })
     }
   },

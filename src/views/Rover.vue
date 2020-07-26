@@ -64,29 +64,33 @@
      <v-row>
        <v-col cols="12" class="col-lg-4 col-md-6 col-sm-12"  v-for="photo in roverData.photos"
       :key="photo.id">
+          <v-hover>
+            <template v-slot="{ hover }">
           <v-card
-      class="mx-auto"
-      max-width="600"
-      elevation="15"
-      
-    >
-      <v-img class="white--text align-end" height="300px" :src="photo.img_src">
-        <v-card-title>{{ photo.camera.full_name }}</v-card-title>
-          <template v-slot:placeholder>
-                      <v-row
-                        class="fill-height ma-0"
-                        align="center"
-                        justify="center"
-                      >
-                        <v-progress-circular indeterminate color="grey"></v-progress-circular>
-                      </v-row>
+              class="mx-auto"
+              max-width="600"
+              :elevation="hover ? 24 : 6"
+              
+            >
+            <v-img class="white--text align-end" height="300px" :src="photo.img_src">
+              <v-card-title>{{ photo.camera.full_name }}</v-card-title>
+                <template v-slot:placeholder>
+                            <v-row
+                              class="fill-height ma-0"
+                              align="center"
+                              justify="center"
+                            >
+                              <v-progress-circular indeterminate color="grey"></v-progress-circular>
+                            </v-row>
+                </template>
+              </v-img>
+              <v-card-subtitle class="pb-0">{{ photo.earth_date }}</v-card-subtitle>
+              <v-card-text class="text--primary">
+              <div>{{ photo.id }}</div>
+             </v-card-text>
+            </v-card>
           </template>
-      </v-img>
-      <v-card-subtitle class="pb-0">{{ photo.earth_date }}</v-card-subtitle>
-          <v-card-text class="text--primary">
-            <div>{{ photo.id }}</div>
-          </v-card-text>
-        </v-card>
+        </v-hover>
        </v-col>
      </v-row>
    </v-container>
