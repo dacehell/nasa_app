@@ -3,9 +3,9 @@
     <v-app>
       <v-img :src="apod.url" min-height="100%">
         <v-container style="height:100vh;" class="d-flex justify-center align-center" >
-          <v-card elevation="15" id="container" color="#90CAF9">
+          <v-card elevation="15" id="container" color="#90CAF9" class="rounded-xl pt-4 pb-3">
           <v-card-title class="pb-0"> 
-          <h1 class="mx-auto">NASA APP</h1>
+          <h2 class="mx-auto">NASA APP</h2>
           </v-card-title>
           <v-card-text>
           <v-form>
@@ -28,7 +28,7 @@
       <v-card-actions>
         
         <v-spacer></v-spacer>
-        <v-btn  rounded color="info" @click="login">Login</v-btn>
+        <v-btn class="mr-4" rounded color="info" @click="login">Login</v-btn>
       </v-card-actions>
     </v-card>
     </v-container>

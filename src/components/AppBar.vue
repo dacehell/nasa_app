@@ -11,7 +11,7 @@
     <template v-slot:img="{ props }">
         <v-img
           v-bind="props"
-          gradient="to right,#E2231A 38%, rgba(238,146,33,0.48)"
+          
         ></v-img>
       </template>
     <v-app-bar-nav-icon

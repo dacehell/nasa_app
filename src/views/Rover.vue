@@ -94,6 +94,7 @@
        </v-col>
      </v-row>
    </v-container>
+   <Footer/>
   </div>
 </template>
 
@@ -101,6 +102,7 @@
 import { mapActions, mapState, mapGetters } from "vuex";
 import AppBar from "@/components/AppBar";
 import Drawer from "@/components/Drawer"
+import Footer from "@/components/Footer"
 export default {
   data() {
     return {
@@ -129,7 +131,8 @@ export default {
   },
   components: {
     AppBar,
-    Drawer
+    Drawer,
+    Footer
   }
 };
 </script>

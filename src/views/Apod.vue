@@ -50,14 +50,17 @@
         </v-col>
       </v-row>
       </v-container>
+      <Footer/>
     </v-main>
+    
   </div>
 </template>
 
 <script>
 import { mapActions, mapState } from "vuex";
 import AppBar from "@/components/AppBar";
-import Drawer from "@/components/Drawer"
+import Drawer from "@/components/Drawer";
+import Footer from "@/components/Footer"
 
 export default {
   data() {
@@ -71,7 +74,8 @@ export default {
   },
   components: {
     AppBar,
-    Drawer
+    Drawer,
+    Footer
   },
   methods: {
     ...mapActions(["getApod"]),
