@@ -1,5 +1,7 @@
 # nasaapp
 
+# DEPLOY  https://nasaapp-d0f23.web.app/  user: nasa@nasa password:12345678
+
 ## Project setup
 ```
 yarn install
